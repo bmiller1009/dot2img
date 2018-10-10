@@ -1,2 +1,7 @@
-*.class
-*.log
+.classpath
+.project
+.settings/
+target/
+bin/
+.idea/
+src/test/resources/
