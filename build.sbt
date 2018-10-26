@@ -1,19 +1,6 @@
 import NativePackagerHelper._
-//plugins settings
-//
-//EclipseKeys.withSource := true
-//scalariformSettings
-//enablePlugins(GitBranchPrompt)
 
 enablePlugins(JavaAppPackaging)
-
-//externalIvySettings()
-//externalIvySettings(Def.setting(Path.userHome / ".ivy2" / "ivysettings.xml"))
-
-//VERSION SETTINGS
-
-//CUSTOM TASK DEF
-//
 
 lazy val commonSettings = Seq(
   organization := "org.bradfordmiller",

@@ -14,9 +14,13 @@ object Dot2Img {
 
   import JsProcessor._
 
+  val acceptedExts = Seq("svg","png","jpeg","jpg")
+
   def save(dotdata: String, path: String) = {
 
-    val fileExt = FilenameUtils.getExtension(path)
+    val fileExt = FilenameUtils.getExtension(path).toLowerCase()
+
+    if(!acceptedExts.contains(fileExt)) throw new NoSuchElementException(s"Unsupported file format: $fileExt")
 
     val svg = invokeJs(dotdata)
 
@@ -28,17 +32,18 @@ object Dot2Img {
 
           val output = new TranscoderOutput(os)
 
-          val transcoder =
-            if (ext == "png") new PNGTranscoder()
-            else if (ext == "jpeg") {
+          val transcoder = ext match {
+            case "png" => new PNGTranscoder()
+            case "jpeg" | "jpg" => {
               val jpegTranscoder = new JPEGTranscoder()
-              jpegTranscoder.addTranscodingHint(JPEGTranscoder.KEY_QUALITY, 1.toFloat)
+              jpegTranscoder.addTranscodingHint(JPEGTranscoder.KEY_QUALITY, 1f)
               jpegTranscoder
             }
-            else throw new NoSuchElementException
+          }
 
           transcoder.transcode(svgInput, output)
           os.flush()
+          Paths.get(path)
         }
       }
     }
