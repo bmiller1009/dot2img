@@ -1,5 +1,5 @@
 # dot2img
-Small library for converting DOT (graph description language) to various image formats
+Small library for converting DOT (graph description language) to various image formats (svg, jpeg, png)
 
 ## Getting Started
 
