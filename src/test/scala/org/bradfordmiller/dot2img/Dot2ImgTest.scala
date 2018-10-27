@@ -20,11 +20,15 @@ class Dot2ImgTest extends FunSuite with BeforeAndAfterAll {
     )
   }
 
-  override def beforeAll(): Unit = {
+  private def deleteCreatedFiles() = {
     getFiles().foreach {case (createdFile, _) =>
       if(createdFile.exists())
         createdFile.delete()
     }
+  }
+
+  override def beforeAll(): Unit = {
+    deleteCreatedFiles()
   }
 
   test("Dot2Img should save correct file type") {
@@ -45,5 +49,9 @@ class Dot2ImgTest extends FunSuite with BeforeAndAfterAll {
     assertThrows[ScriptException] {
       Dot2Img.save(badData, "src/test/resources/testformat.jpg")
     }
+  }
+
+  override def afterAll(): Unit = {
+    deleteCreatedFiles()
   }
 }
