@@ -20,6 +20,11 @@ mappings in Universal ++= {
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
 //resolvers += "jitpack" at "https://jitpack.io"
+publishMavenStyle := false
+
+publishTo := Some(
+  Resolver.file("file", new File(Path.userHome.absolutePath + "/.ivy2/local/"))(Resolver.ivyStylePatterns)
+)
 
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
