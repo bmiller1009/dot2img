@@ -19,7 +19,6 @@ mappings in Universal ++= {
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
-//resolvers += "jitpack" at "https://jitpack.io"
 publishMavenStyle := false
 
 publishTo := Some(
@@ -34,8 +33,7 @@ lazy val root = (project in file(".")).
       "com.jsuereth" %% "scala-arm" % "2.0",
       "org.apache.xmlgraphics" % "batik-transcoder" % "1.10",
       "org.apache.xmlgraphics" % "batik-codec" % "1.10",
-      "commons-io" % "commons-io" % "2.6"/*,
-      "com.github.User" % "Repo" % "Tag"*/
+      "commons-io" % "commons-io" % "2.6"
     )
   )
 
