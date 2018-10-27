@@ -11,7 +11,7 @@ import resource._
 object JsProcessor {
 
   private val vizReader = Source.fromResource("viz.js").bufferedReader()
-  private val engine = new ScriptEngineManager().getEngineByName("nashorn")
+  private val engine = new ScriptEngineManager().getEngineByName("js")
 
   private val vizJs =
     """
