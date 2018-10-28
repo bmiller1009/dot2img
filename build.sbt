@@ -1,4 +1,4 @@
-import NativePackagerHelper._
+//import NativePackagerHelper._
 import ReleaseTransformations._
 
 enablePlugins(JavaAppPackaging)
@@ -9,17 +9,22 @@ lazy val commonSettings = Seq(
   scalaVersion :="2.12.7"
 )
 
-scriptClasspath := Seq("../conf", "*")
+//scriptClasspath := Seq("../conf", "*")
 
-mappings in Universal ++= {
+packageSummary in Linux := "Small library for converting DOT (graph description language) to various image formats"
+packageSummary in Windows := "Small library for converting DOT (graph description language) to various image formats"
+packageDescription := "Small library for converting DOT (graph description language) to various image formats"
+/*mappings in Universal ++= {
   directory("config_files")++
     // copy configuration files to config directory
     contentOf("src/main/resources").toMap.mapValues("conf/" + _)
-}
+}*/
+
+crossScalaVersions := Seq("2.12.7", "2.11.8")
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
-publishMavenStyle := false
+//publishMavenStyle := false
 
 publishTo := Some(
   Resolver.file("file", new File(Path.userHome.absolutePath + "/.ivy2/local/"))(Resolver.ivyStylePatterns)
