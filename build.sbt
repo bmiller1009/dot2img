@@ -17,8 +17,6 @@ crossScalaVersions := Seq("2.12.7", "2.11.12")
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
-//publishMavenStyle := false
-
 publishTo := Some(
   Resolver.file("file", new File(Path.userHome.absolutePath + "/.ivy2/local/"))(Resolver.ivyStylePatterns)
 )
