@@ -4,13 +4,13 @@ import java.io.StringWriter
 
 import javax.script.ScriptEngineManager
 import javax.script.Invocable
+import resource._
 
 import scala.io.Source
-import resource._
 
 object JsProcessor {
 
-  private val vizReader = Source.fromResource("viz.js").bufferedReader()
+  private val vizReader = Source.fromFile("src/main/resources/viz.js").bufferedReader()
   private val engine = new ScriptEngineManager().getEngineByName("js")
 
   private val vizJs =
