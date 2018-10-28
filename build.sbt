@@ -1,4 +1,4 @@
-//import NativePackagerHelper._
+import NativePackagerHelper._
 import ReleaseTransformations._
 
 enablePlugins(JavaAppPackaging)
