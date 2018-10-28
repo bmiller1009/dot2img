@@ -20,7 +20,7 @@ packageDescription := "Small library for converting DOT (graph description langu
     contentOf("src/main/resources").toMap.mapValues("conf/" + _)
 }*/
 
-crossScalaVersions := Seq("2.12.7", "2.11.8")
+crossScalaVersions := Seq("2.12.7", "2.11.12")
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
