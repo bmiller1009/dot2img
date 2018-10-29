@@ -25,7 +25,7 @@ If you're using [Maven](maven.apache.org) simply specify the GAV coordinate belo
 </dependency>
 ```
 
-####Running with SBT
+#### Running with SBT
 
 Add this GAV coordinate to your SBT dependency list
 
@@ -63,7 +63,7 @@ See also the list of [contributors](https://github.com/bmiller1009/dot2img/contr
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
