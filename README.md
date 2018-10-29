@@ -45,6 +45,26 @@ sbt clean compile 'release cross with-defaults'
 
 The resulting jar will be published to ~/.ivy2/local/org/bradfordmiller/dot2img_{SCALA_VERSION}
 
+
+## Using the library
+
+The library is quite simple.  Feed in your dot grammar as a string along with an output path as seen below
+
+```
+import org.bradfordmiller.dot2img
+...
+
+//Set up your dot data
+val data = "digraph G {\n  \"Welcome\" -> \"To\"\n  \"To\" -> \"Web\"\n  \"To\" -> \"GraphViz!\"\n}"
+
+val p = Dot2Img.save(data, "/tmp/testformat.jpg")
+
+println(p)
+
+```
+
+The saved image will be at the path in the appropriately specified format.  Currently svg, jpeg, and png are supported
+
 ## Built With
 
 * [scala](https://www.scala-lang.org/) - The programming language
