@@ -1,86 +1,71 @@
 # dot2img
+
 Small library for converting DOT (graph description language) to various image formats (svg, jpeg, png)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
-```
-Give examples
-```
+* sbt 0.13 or greater if you want to build from source
+* JVM 8 for the Scala 2.12 build, JVM 6+ for the 2.11 build
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+If you're using [Maven](maven.apache.org) simply specify the GAV coordinate below and Maven will do the rest
 
 ```
-Give the example
+<dependency>
+  <groupId>org.bradfordmiller</groupId>
+  <artifactId>dot2img_2.11</artifactId>
+  <version>0.0.2</version>
+</dependency>
 ```
 
-And repeat
+####Running with SBT
+
+Add this GAV coordinate to your SBT dependency list
 
 ```
-until finished
+libraryDependencies += "org.bradfordmiller" %% "dot2img" % "0.0.2"
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+## Building from source
 
-## Running the tests
+Building the library requires SBT 0.13+ and a 1.8 version of the JDK for the Scala 2.12 version, or a 1.6+ version of
+the JDK for the Scala 2.11 version
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+You can build the library with this command
 ```
-Give an example
+sbt clean compile 'release cross with-defaults'
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+The resulting jar will be published to ~/.ivy2/local/org/bradfordmiller/dot2img_{SCALA_VERSION}
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* [scala](https://www.scala-lang.org/) - The programming language
+* [Apache Batik](https://xmlgraphics.apache.org/batik/) - SVG image conversion
+* [viz.js](http://www.webgraphviz.com/viz.js) - Javascript rendering engine for dot grammar
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+For the versions available, see the [tags on this repository](https://github.com/bmiller1009/dot2img/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Bradford Miller** - *Initial work* - [bfm](https://github.com/bmiller1009)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/bmiller1009/dot2img/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* This library wraps viz.js to do the heavy lifting with the graphics rendering as seen [here](http://www.webgraphviz.com/viz.js)
+* Thanks to [PurpleBooth](https://gist.github.com/PurpleBooth) for the README template as seen [here](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
