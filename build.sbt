@@ -20,7 +20,7 @@ crossScalaVersions := Seq("2.12.7", "2.11.12")
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
 publishTo := Some(
-  Resolver.file("file", new File(Path.userHome.absolutePath + "/.ivy2/local/"))(Resolver.ivyStylePatterns)
+  Resolver.file("local")
 )
 
 lazy val root = (project in file(".")).
@@ -36,9 +36,7 @@ lazy val root = (project in file(".")).
   )
 
 releaseProcess := Seq[ReleaseStep](
-  checkSnapshotDependencies,              // : ReleaseStep
   inquireVersions,                        // : ReleaseStep
-  runClean,                               // : ReleaseStep
   runTest,                                // : ReleaseStep
   setReleaseVersion,                      // : ReleaseStep
   commitReleaseVersion,                   // : ReleaseStep, performs the initial git checks
