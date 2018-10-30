@@ -3,7 +3,6 @@ import ReleaseTransformations._
 
 enablePlugins(JavaAppPackaging)
 
-externalIvySettings()
 externalIvySettings(Def.setting(Path.userHome / ".ivy2" / "ivysettings.xml"))
 
 lazy val commonSettings = Seq(
