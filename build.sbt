@@ -31,7 +31,8 @@ lazy val root = (project in file(".")).
       "com.jsuereth" %% "scala-arm" % "2.0",
       "org.apache.xmlgraphics" % "batik-transcoder" % "1.10",
       "org.apache.xmlgraphics" % "batik-codec" % "1.10",
-      "commons-io" % "commons-io" % "2.6"
+      "commons-io" % "commons-io" % "2.6",
+      "org.apache.ws.security" % "wss4j" % "1.6.19"
     )
   )
 
