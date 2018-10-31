@@ -1,10 +1,26 @@
 package org.bradfordmiller.dot2img
 
 import java.io.File
+import java.nio.file.Paths
 
 import javax.script.ScriptException
 import org.apache.commons.io.FileUtils
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
+import org.w3c.dom.Attr
+import org.xmlunit.builder.DiffBuilder
+import org.xmlunit.diff.{Comparison, ComparisonResult, DifferenceEvaluator}
+
+class IgnoreAttributeDifferenceEvaluator(attributeName: String) extends DifferenceEvaluator {
+  override def evaluate(comparison: Comparison, outcome: ComparisonResult): ComparisonResult = {
+    if (outcome eq ComparisonResult.EQUAL) return outcome
+    val controlNode = comparison.getControlDetails.getTarget
+    if (controlNode.isInstanceOf[Attr]) {
+      val attr = controlNode.asInstanceOf[Attr]
+      if (attr.getName.equals(attributeName)) return ComparisonResult.SIMILAR
+    }
+    outcome
+  }
+}
 
 class Dot2ImgTest extends FunSuite with BeforeAndAfterAll {
 
@@ -31,8 +47,21 @@ class Dot2ImgTest extends FunSuite with BeforeAndAfterAll {
     deleteCreatedFiles()
   }
 
-  test("Dot2Img should save correct file type") {
-    getFiles().foreach {case (createdFile, testFile) =>
+  test("Dot2Img should create a valid svg xml definition") {
+    val p = Dot2Img.save(data, s"${path}test.svg")
+    val generatedFileXml = FileUtils.readFileToString(p.toFile())
+    val controlFileXml = FileUtils.readFileToByteArray(Paths.get(s"${testPath}test.svg").toFile())
+
+    //Note - the xml attribute id is ignored in the svg because it is dynamically set in viz.js
+    val idDiff = DiffBuilder.compare(controlFileXml).withTest(generatedFileXml)
+      .withDifferenceEvaluator(new IgnoreAttributeDifferenceEvaluator("id"))
+      .checkForSimilar().build()
+
+    assert(!idDiff.hasDifferences())
+  }
+
+  test("Dot2Img should save correct file type for jpeg and png") {
+    getFiles().filter{case (cf, _) => cf.getName() != "test.svg"}.foreach {case (createdFile, testFile) =>
       val p = Dot2Img.save(data, createdFile.getPath)
       assert(FileUtils.contentEquals(p.toFile(), testFile))
     }

@@ -32,7 +32,9 @@ lazy val root = (project in file(".")).
       "org.apache.xmlgraphics" % "batik-transcoder" % "1.10",
       "org.apache.xmlgraphics" % "batik-codec" % "1.10",
       "commons-io" % "commons-io" % "2.6",
-      "org.apache.ws.security" % "wss4j" % "1.6.19"
+      "org.apache.ws.security" % "wss4j" % "1.6.19",
+      "org.xmlunit" % "xmlunit-core" % "2.2.1",
+      "org.xmlunit" % "xmlunit-matchers" % "2.2.1"
     )
   )
 
