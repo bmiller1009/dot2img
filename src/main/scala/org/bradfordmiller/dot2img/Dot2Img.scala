@@ -18,9 +18,7 @@ import org.xml.sax.InputSource
 
 object Dot2Img {
 
-  import JsProcessor._
-
-  val acceptedExts = Seq("svg","png","jpeg","jpg")
+  private val acceptedExts = Seq("svg","png","jpeg","jpg")
 
   private def overwriteWidthHeight(data: String, width: Int, height: Int, unit: String): String = {
     val doc =
@@ -41,7 +39,7 @@ object Dot2Img {
 
     if(!acceptedExts.contains(fileExt)) throw new NoSuchElementException(s"Unsupported file format: $fileExt")
 
-    val rawSVG = invokeJs(dotdata)
+    val rawSVG = JsProcessor.invokeJs(dotdata)
 
     val svg = overwriteWidthHeight(rawSVG, width, height, unit)
 
