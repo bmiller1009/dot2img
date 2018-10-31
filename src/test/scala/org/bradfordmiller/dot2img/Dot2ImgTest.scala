@@ -60,13 +60,6 @@ class Dot2ImgTest extends FunSuite with BeforeAndAfterAll {
     assert(!idDiff.hasDifferences())
   }
 
-  test("Dot2Img should save correct file type for jpeg and png") {
-    getFiles().filter{case (cf, _) => cf.getName() != "test.svg"}.foreach {case (createdFile, testFile) =>
-      val p = Dot2Img.save(data, createdFile.getPath)
-      assert(FileUtils.contentEquals(p.toFile(), testFile))
-    }
-  }
-
   test("Dot2Img should fail when given an unknown file extension") {
     assertThrows[NoSuchElementException] {
       Dot2Img.save(data, "src/test/resources/test.dat")
