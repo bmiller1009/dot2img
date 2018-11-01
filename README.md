@@ -21,7 +21,7 @@ If you're using [Maven](maven.apache.org) simply specify the GAV coordinate belo
 <dependency>
   <groupId>org.bradfordmiller</groupId>
   <artifactId>dot2img_2.11</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.9</version>
 </dependency>
 ```
 
@@ -30,7 +30,7 @@ If you're using [Maven](maven.apache.org) simply specify the GAV coordinate belo
 Add this GAV coordinate to your SBT dependency list
 
 ```
-libraryDependencies += "org.bradfordmiller" %% "dot2img" % "0.0.4"
+libraryDependencies += "org.bradfordmiller" %% "dot2img" % "0.0.9"
 ```
 
 ## Building from source
