@@ -20,20 +20,26 @@ object Dot2Img {
 
   private val acceptedExts = Seq("svg","png","jpeg","jpg")
 
-  private def overwriteWidthHeight(data: String, width: Int, height: Int, unit: String): String = {
+  private def overwriteWidthHeight(data: String, unit: String): String = {
     val doc =
       DocumentBuilderFactory.newInstance()
       .newDocumentBuilder()
       .parse(new InputSource(new StringReader(data)))
 
     val root = doc.getDocumentElement()
+
+    //Get width and height of the viewbox
+    val viewbox = root.getAttribute("viewBox").split(" ")
+    val width = viewbox(2).toFloat.toInt
+    val height = viewbox(3).toFloat.toInt
+
     root.setAttribute("width", s"${width}$unit")
     root.setAttribute("height", s"${height}$unit")
 
     XMLUtils.PrettyDocumentToString(doc)
   }
 
-  def save(dotdata: String, path: String, width: Int = 200, height: Int = 200, unit: String = "pt") = {
+  def save(dotdata: String, path: String, unit: String = "pt") = {
 
     val fileExt = FilenameUtils.getExtension(path).toLowerCase()
 
@@ -41,7 +47,7 @@ object Dot2Img {
 
     val rawSVG = JsProcessor.invokeJs(dotdata)
 
-    val svg = overwriteWidthHeight(rawSVG, width, height, unit)
+    val svg = overwriteWidthHeight(rawSVG, unit)
 
     fileExt match {
       case "svg" => Files.write(Paths.get(path), svg.getBytes())
