@@ -19,10 +19,6 @@ crossScalaVersions := Seq("2.12.7", "2.11.12")
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
-publishTo := Some(
-  Resolver.file("local")
-)
-
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
   settings(
