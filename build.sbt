@@ -3,8 +3,6 @@ import ReleaseTransformations._
 
 enablePlugins(JavaAppPackaging)
 
-externalIvySettings(Def.setting(Path.userHome / ".ivy2" / "ivysettings.xml"))
-
 lazy val commonSettings = Seq(
   organization := "org.bradfordmiller",
   name := "dot2img",
@@ -18,10 +16,6 @@ packageDescription := "Small library for converting DOT (graph description langu
 crossScalaVersions := Seq("2.12.7", "2.11.12")
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
-
-publishTo := Some(
-  Resolver.file("local")
-)
 
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
