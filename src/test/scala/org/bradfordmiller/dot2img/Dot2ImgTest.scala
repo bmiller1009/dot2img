@@ -12,13 +12,17 @@ import org.xmlunit.diff.{Comparison, ComparisonResult, DifferenceEvaluator}
 
 class IgnoreAttributeDifferenceEvaluator(attributeName: String) extends DifferenceEvaluator {
   override def evaluate(comparison: Comparison, outcome: ComparisonResult): ComparisonResult = {
-    if (outcome eq ComparisonResult.EQUAL) return outcome
-    val controlNode = comparison.getControlDetails.getTarget
-    if (controlNode.isInstanceOf[Attr]) {
-      val attr = controlNode.asInstanceOf[Attr]
-      if (attr.getName.equals(attributeName)) return ComparisonResult.SIMILAR
+    if (outcome eq ComparisonResult.EQUAL) {
+      outcome
+    } else {
+      val controlNode = comparison.getControlDetails.getTarget
+      if (controlNode.isInstanceOf[Attr]) {
+        val attr = controlNode.asInstanceOf[Attr]
+        if (attr.getName.equals(attributeName))
+          ComparisonResult.SIMILAR
+      }
+      outcome
     }
-    outcome
   }
 }
 

@@ -10,7 +10,6 @@ import scala.io.Source
 
 object JsProcessor {
 
-  //private val vizReader = Source.fromFile("src/main/resources/viz.js").bufferedReader()
   private val vizReader = Source.fromInputStream(getClass.getResourceAsStream("/viz.js")).bufferedReader()
   private val engine = new ScriptEngineManager(null).getEngineByName("nashorn")
 
