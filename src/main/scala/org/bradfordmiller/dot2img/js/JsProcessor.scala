@@ -25,18 +25,18 @@ object JsProcessor {
   engine.eval(vizJs)
 
   def invokeJs(dotData: String) = {
+    this.synchronized {
+      managed(new StringWriter()).acquireAndGet { sw =>
+        val context = engine.getContext()
+        val invocable = engine.asInstanceOf[Invocable]
 
-    managed(new StringWriter()).acquireAndGet { sw =>
+        context.setWriter(sw)
+        context.setErrorWriter(sw)
 
-      val context = engine.getContext()
-      val invocable = engine.asInstanceOf[Invocable]
+        invocable.invokeFunction("vizFunc", dotData)
 
-      context.setWriter(sw)
-      context.setErrorWriter(sw)
-
-      invocable.invokeFunction("vizFunc", dotData)
-
-      sw.toString()
+        sw.toString()
+      }
     }
   }
 }
