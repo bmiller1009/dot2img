@@ -1,5 +1,7 @@
 # dot2img
 
+[![Build Status](https://travis-ci.org/bmiller1009/dot2img.svg?branch=master)](https://travis-ci.org/bmiller1009/dot2img)
+
 Small library for converting DOT (graph description language) to various image formats (svg, jpeg, png)
 
 ## Getting Started
