@@ -65,7 +65,11 @@ println(p)
 
 ```
 
-The saved image will be at the path in the appropriately specified format.  Currently svg, jpeg, and png are supported
+The saved image will be at the path in the appropriately specified format.  Currently svg, jpeg, and png are supported.
+
+The above code will produce the following image:
+
+![Test Graph](https://github.com/bmiller1009/dot2img/blob/master/src/test/resources/testfiles/test.jpeg?raw=true)
 
 ## Built With
 
