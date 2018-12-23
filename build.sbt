@@ -39,7 +39,7 @@ lazy val root = (project in file(".")).
 
 releaseProcess := Seq[ReleaseStep](
   inquireVersions,                        // : ReleaseStep
-  runTest,                                // : ReleaseStep
+  //runTest,                                // : ReleaseStep
   setReleaseVersion,                      // : ReleaseStep
   commitReleaseVersion,                   // : ReleaseStep, performs the initial git checks
   tagRelease,                             // : ReleaseStep
