@@ -19,7 +19,7 @@ credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
 publishTo := sonatypePublishTo.value
 publishMavenStyle := true
-useGpg := true,
+useGpg := true
 usePgpKeyHex("CA35D4D1FD142754")
 
 lazy val root = (project in file(".")).
