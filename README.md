@@ -1,6 +1,7 @@
 # dot2img
 
 [![Build Status](https://travis-ci.org/bmiller1009/dot2img.svg?branch=master)](https://travis-ci.org/bmiller1009/dot2img)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.bradfordmiller/dot2img_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.bradfordmiller/dot2img_2.12)
 
 Small library for converting DOT (graph description language) to various image formats (svg, jpeg, png)
 
