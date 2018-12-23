@@ -19,8 +19,7 @@ credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
 publishTo := sonatypePublishTo.value
 publishMavenStyle := true
-useGpg := true
-usePgpKeyHex("CA35D4D1FD142754")
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
@@ -43,6 +42,7 @@ releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,                      // : ReleaseStep
   commitReleaseVersion,                   // : ReleaseStep, performs the initial git checks
   tagRelease,                             // : ReleaseStep
+  publishArtifacts,
   setNextVersion,                         // : ReleaseStep
   commitNextVersion,                      // : ReleaseStep
   pushChanges                             // : ReleaseStep, also checks that an upstream branch is properly configured
