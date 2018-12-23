@@ -42,7 +42,7 @@ the JDK for the Scala 2.11 version
 
 You can build the library with this command
 ```
-sbt clean compile 'release cross with-defaults'
+sbt publishLocal
 ```
 
 The resulting jar will be published to ~/.ivy2/local/org/bradfordmiller/dot2img_{SCALA_VERSION}
