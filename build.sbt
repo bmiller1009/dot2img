@@ -17,18 +17,23 @@ crossScalaVersions := Seq("2.12.7", "2.11.12")
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
+publishTo := sonatypePublishTo.value
+publishMavenStyle := true
+useGpg := true,
+usePgpKeyHex("CA35D4D1FD142754")
+
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
   settings(
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.0.5" % Test,
       "com.jsuereth" %% "scala-arm" % "2.0",
       "org.apache.xmlgraphics" % "batik-transcoder" % "1.10",
       "org.apache.xmlgraphics" % "batik-codec" % "1.10",
       "commons-io" % "commons-io" % "2.6",
       "org.apache.ws.security" % "wss4j" % "1.6.19",
       "org.xmlunit" % "xmlunit-core" % "2.2.1" % Test,
-      "org.xmlunit" % "xmlunit-matchers" % "2.2.1" % Test
+      "org.xmlunit" % "xmlunit-matchers" % "2.2.1" % Test,
+      "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     )
   )
 
@@ -42,3 +47,17 @@ releaseProcess := Seq[ReleaseStep](
   commitNextVersion,                      // : ReleaseStep
   pushChanges                             // : ReleaseStep, also checks that an upstream branch is properly configured
 )
+
+pomExtra := (
+  <scm>
+    <url>git@github.com:bmiller1009/dot2img.git/</url>
+    <connection>scm:git@github.com:bmiller1009/dot2img.git</connection>
+  </scm>
+    <developers>
+      <developer>
+        <id>bmiller1009</id>
+        <name>Bradford Miller</name>
+        <url>https://github.com/bmiller1009</url>
+      </developer>
+    </developers>
+  )
