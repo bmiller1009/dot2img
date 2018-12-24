@@ -49,6 +49,14 @@ releaseProcess := Seq[ReleaseStep](
 )
 
 pomExtra := (
+  <url>https://github.com/bmiller1009/dot2img</url>
+  <licenses>
+    <license>
+      <name>Apache 2</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <scm>
     <url>git@github.com:bmiller1009/dot2img.git/</url>
     <connection>scm:git@github.com:bmiller1009/dot2img.git</connection>
