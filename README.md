@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/bmiller1009/dot2img.svg?branch=master)](https://travis-ci.org/bmiller1009/dot2img)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.bradfordmiller/dot2img_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.bradfordmiller/dot2img_2.11)
+[![github: bmiller1009/dot2img](https://img.shields.io/badge/github%3A-issues-blue.svg?style=flat-square)](https://github.com/bmiller1009/dot2img/issues)
 
 Small library for converting DOT (graph description language) to various image formats (svg, jpeg, png)
 
@@ -20,7 +21,7 @@ What things you need to install the software and how to install them
 
 If you're using [Maven](maven.apache.org) simply specify the GAV coordinate below and Maven will do the rest
 
-```
+```xml
 <dependency>
   <groupId>org.bradfordmiller</groupId>
   <artifactId>dot2img_2.11</artifactId>
@@ -32,7 +33,7 @@ If you're using [Maven](maven.apache.org) simply specify the GAV coordinate belo
 
 Add this GAV coordinate to your SBT dependency list
 
-```
+```sbt
 libraryDependencies += "org.bradfordmiller" %% "dot2img" % "0.0.21"
 ```
 
@@ -42,7 +43,7 @@ Building the library requires SBT 0.13+ and a 1.8 version of the JDK for the Sca
 the JDK for the Scala 2.11 version
 
 You can build the library with this command
-```
+```sbt
 sbt publishLocal
 ```
 
@@ -53,7 +54,7 @@ The resulting jar will be published to ~/.ivy2/local/org/bradfordmiller/dot2img_
 
 The library is quite simple.  Feed in your dot grammar as a string along with an output path as seen below
 
-```
+```scala
 import org.bradfordmiller.dot2img
 ...
 
